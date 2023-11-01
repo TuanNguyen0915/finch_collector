@@ -16,12 +16,12 @@ main {
 
 .finch-container .finch-img,
 .finch-container .finch-details {
-    padding: 4rem;
+    padding: 2rem;
 }
 
 .finch-details {
     flex-direction: column;
-    align-items: start;
+    margin-left: 10rem;
     width: 98%;
 }
 
@@ -51,19 +51,7 @@ main {
     margin-top: 2rem;
 }
 
-/* 
-.usr-img {
-    width: 100%;
-    border-radius: var(--card-border-radius);
-}
 
-.finch-details {
-    width: 98%;
-}
-
-.finch-actions {
-    margin-top: 20px;
-}
 
 .feedings-toy-container {
     display: flex;
@@ -208,18 +196,23 @@ main {
     margin-bottom: 10px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 1000px) {
     .finch-container {
-        padding: 35px 30px;
-        flex-direction: row;
+        margin-top: 2rem;
+        /* padding: 35px 30px; */
+        flex-direction: column;
         align-items: center;
         justify-content: start;
     }
 
     .finch-img {
-        width: 25%;
-        max-width: 250px;
-        margin-right: 25px;
+        display: none;
+    }
+    .finch-details {
+        margin-left: 1rem;
+    }
+    .btn {
+        padding: 5px;
     }
 
     .feedings-toy-container {
@@ -231,10 +224,12 @@ main {
     .feedings-toy-container>section {
         width: 45%;
     }
+
 }
 
 @media only screen and (min-width: 1024px) {
+
     .feedings-toy-container {
         padding: 0 40px;
     }
-} */
+}

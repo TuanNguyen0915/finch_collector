@@ -3,6 +3,16 @@
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/finches/finch-detail.css' %}" />
+<link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<script defer src="{% static 'js/cat-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -29,10 +39,43 @@
       {{ finch.description }}
     </p>
     <div class='finch-actions'>
-        <a href=" {% url "finch-update" finch.id %}" class='btn warn' >Edit {{finch.name}}</a>
-        <a href="{% url "finch-delete" finch.id %}" class='btn danger'>Delete</a>
+      <a href=" {% url "finch-update" finch.id %}" class='btn warn'>Edit {{finch.name}}</a>
+      <a href="{% url "finch-delete" finch.id %}" class='btn danger'>Delete</a>
     </div>
   </div>
 </section>
+
+<div class="feedings-toy-container">
+  <section class="feedings">
+    <div class="subsection-title">
+      <h2>Feedings 🥝 🥜 🍎</h2>
+    </div>
+    <h3>Add a Feeding</h3>
+    <form method="post" class="subsection-content" autocomplete="off">
+      {% csrf_token %}
+      {{ feeding_form.as_p }}
+      <button type="submit" class="btn submit">Add Feeding</button>
+    </form>
+    <h3>Past Feedings</h3>
+    {% comment %} New code above {% endcomment %}
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Meal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for feeding in finch.feeding_set.all %}
+        <tr>
+          <td>{{feeding.date}}</td>
+          <td>{{feeding.get_meal_display}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+
 
 {% endblock %}
