@@ -17,13 +17,14 @@
   <header>
     <div class="header-logo-container">
       <a href="/">
-        <img class="signature" src="{% static 'images/Tuan_signature.png' %}" alt="The Finch Collector Logo">
+        <img class="signature" src="{% static 'images/Tuan_signature_w.png' %}" alt="The Finch Collector Logo">
       </a>
     </div>
     <nav>
       <ul>
-        <li><a href="/finches">Finches</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="{% url 'finch-index' %}" >Finches</a></li>
+        <li><a href="{% url 'finch-create' %}" >Add a Finch</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
       </ul>
     </nav>
   </header>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Delete {{finch.name}}?</h1>
+</div>
+<div>
+  <img src="{% static 'images/bird_no.gif' %}" alt="A bird is flying" />
+</div>
+<h2>Are you sure you want to delete
+  {{ finch.name }}?
+</h2>
+
+<form action="" method="post" class="form">
+  {% csrf_token %}
+  <a href="{% url 'finch-detail' finch.id %}" class="btn secondary">
+    Cancel
+  </a>
+  <button type="submit" class="btn danger">Yes - Delete!</button>
+</form>
+
+{% endblock %}

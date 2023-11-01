@@ -10,10 +10,10 @@
 <section class="card-container">
   {% for finch in finches %}
   <div class="card">
-    <a href="/finches/{{finch.id}}">
+    <a href={% url "finch-detail" finch.id %}>
       <div class="card-content">
         <div class="card-img-container">
-          <img src="{% static 'images/pinch-avatar.jpeg' %}" alt="A skater boy cat">
+          <img src="{% static 'images/bird_flying.gif' %}" alt="A skater boy cat">
         </div>
         <h2 class="card-title">
           {{ finch.name }}

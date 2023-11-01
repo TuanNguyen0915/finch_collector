@@ -28,6 +28,10 @@
     <p>
       {{ finch.description }}
     </p>
+    <div class='finch-actions'>
+        <a href=" {% url "finch-update" finch.id %}" class='btn warn' >Edit {{finch.name}}</a>
+        <a href="{% url "finch-delete" finch.id %}" class='btn danger'>Delete</a>
+    </div>
   </div>
 </section>
 
