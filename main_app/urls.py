@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.home, name="home"),
+    path("", views.Home.as_view(), name="home"),
     path("about/", views.about, name="about"),
     path("finches/", views.finch_index, name="finch-index"),
     # CRUD finch
@@ -19,5 +19,7 @@ urlpatterns = [
     path("toys/<int:pk>/update/", views.ToyUpdate.as_view(), name="toy-update"),
     path("toys/<int:pk>/delete/", views.ToyDelete.as_view(), name="toy-delete"),
     # associate a toy with a finch (M:M)
-    path('finches/<int:finch_id>/assoc-toy/<int:toy_id>/', views.assoc_toy, name='assoc-toy')
+    path('finches/<int:finch_id>/assoc-toy/<int:toy_id>/', views.assoc_toy, name='assoc-toy'),
+    # add user
+    path('accounts/signup/', views.signup, name='signup'),
 ]
