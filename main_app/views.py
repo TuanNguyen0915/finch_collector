@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Finch
 from .form import FeedingForm
@@ -40,3 +40,12 @@ def finch_detail(request, finch_id):
 
 def about(request):
     return render(request, "about.html")
+
+
+def add_feeding(request, finch_id):
+    form = FeedingForm(request.POST)
+    if form.is_valid():
+        new_feeding = form.save(commit=False)
+        new_feeding.finch_id = finch_id
+        new_feeding.save()
+    return redirect('finch-detail', finch_id=finch_id)

@@ -3,14 +3,9 @@
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/finches/finch-detail.css' %}" />
-<link 
-  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
-  rel="stylesheet" 
-/>
+<link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
-<script 
-  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
->
+<script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js">
 </script>
 <script defer src="{% static 'js/cat-detail.js' %}"></script>
 {% endblock %}
@@ -51,13 +46,13 @@
       <h2>Feedings 🥝 🥜 🍎</h2>
     </div>
     <h3>Add a Feeding</h3>
-    <form method="post" class="subsection-content" autocomplete="off">
+    <form action="{% url "add-feeding" finch.id %}" method="post" class="subsection-content" autocomplete="off">
       {% csrf_token %}
       {{ feeding_form.as_p }}
       <button type="submit" class="btn submit">Add Feeding</button>
     </form>
     <h3>Past Feedings</h3>
-    {% comment %} New code above {% endcomment %}
+    {% if finch.feeding_set.all.count %}
     <table>
       <thead>
         <tr>
@@ -74,6 +69,11 @@
         {% endfor %}
       </tbody>
     </table>
+    {% else %}
+    <div class="subsection-content">
+      <p>{{finch.name}} has never been fed 😔</p>
+    </div>
+    {% endif %}
   </section>
 </div>
 
