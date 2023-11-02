@@ -7,9 +7,15 @@ urlpatterns = [
     path("finches/", views.finch_index, name="finch-index"),
     # CRUD finch
     path("finches/<int:finch_id>", views.finch_detail, name="finch-detail"),
-    path("finches/create", views.FinchCreate.as_view(), name='finch-create'),
-    path("finches/<int:pk>/update", views.FinchUpdate.as_view(), name='finch-update'),
-    path("finches/<int:pk>/delete", views.FinchDelete.as_view(), name='finch-delete'),
+    path("finches/create", views.FinchCreate.as_view(), name="finch-create"),
+    path("finches/<int:pk>/update", views.FinchUpdate.as_view(), name="finch-update"),
+    path("finches/<int:pk>/delete", views.FinchDelete.as_view(), name="finch-delete"),
     # Feeding
-    path("finches/<int:finch_id>/add-feeding/", views.add_feeding, name='add-feeding')
+    path("finches/<int:finch_id>/add-feeding/", views.add_feeding, name="add-feeding"),
+    # CRUD Toy
+    path("toys/create", views.ToyCreate.as_view(), name="toy-create"),
+    path("toys/<int:pk>/", views.ToyDetail.as_view(), name="toy-detail"),
+    path("toys/", views.ToyList.as_view(), name="toy-index"),
+    path("toys/<int:pk>/update/", views.ToyUpdate.as_view(), name="toy-update"),
+    path("toys/<int:pk>/delete/", views.ToyDelete.as_view(), name="toy-delete"),
 ]

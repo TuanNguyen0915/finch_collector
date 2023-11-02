@@ -93,12 +93,12 @@ main {
 
 .unfed,
 .no-toys {
-    color: var(--danger);
+    color: rgb(90, 3, 3);
 }
 
 .fed,
 .all-toys {
-    color: var(--submit);
+    color: rgb(3, 94, 3);
 }
 
 
